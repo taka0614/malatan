@@ -19,7 +19,7 @@ body {
   font-family:
     "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo,
     sans-serif;
-  color: #f7efe3;
+  color: #fff;
   background: #000;
   line-height: 1.85;
   overflow-x: hidden;
@@ -488,7 +488,7 @@ Fixed Side Columns
 .menu-card p,
 .step-list p,
 .qa-list p {
-  color: #dbcbb8;
+  color: #e0e0e0;
 }
 .lead-text {
   /* margin: 24px 0 0; */
@@ -677,7 +677,7 @@ section#concept {
 .step-list li {
   padding: 22px;
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.055);
+  background: rgba(0, 0, 0, .5);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .step-list span {
@@ -737,10 +737,10 @@ section#concept {
 .qa-list details {
   padding: 18px 20px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.055);
+  background: rgba(0, 0, 0, .5);
   border: 1px solid rgba(255, 255, 255, 0.11);
 }
-.qa-list summary {
+.qa-list summary , p.answer {
   cursor: pointer;
   color: #f7efe3;
   font-weight: 700;
@@ -966,47 +966,73 @@ small {
 
   .mobile-nav {
     position: fixed;
-    top: 76px;
-    right: 16px;
-    left: auto;
+    inset: 0;
     z-index: 1001;
-    width: min(230px, calc(100vw - 28px));
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
     max-height: 0;
     margin: 0;
-    padding: 0;
+    padding: 0 38px;
     overflow: hidden;
     opacity: 0;
-    border-radius: 22px;
-    border: 1px solid rgba(216, 169, 83, 0.28);
-    background: rgba(8, 5, 4, 0.88);
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.46);
-    backdrop-filter: blur(16px);
-    pointer-events: auto;
+    border: 0;
+    border-radius: 0;
+    background:
+      radial-gradient(
+        circle at 88% 12%,
+        rgba(216, 169, 83, 0.16),
+        transparent 28%
+      ),
+      radial-gradient(
+        circle at 12% 88%,
+        rgba(195, 30, 23, 0.2),
+        transparent 30%
+      ),
+      rgba(8, 5, 4, 0.94);
+    box-shadow: none;
+    backdrop-filter: blur(18px);
+    pointer-events: none;
+
+    display: grid;
+    align-content: center;
+    gap: 12px;
+
     transition:
-      max-height 0.28s ease,
-      opacity 0.22s ease,
-      padding 0.22s ease;
+      max-height 0.34s ease,
+      opacity 0.24s ease,
+      padding 0.24s ease;
   }
 
   .mobile-nav.is-open {
-    max-height: 520px;
-    padding: 10px;
+    max-height: 100vh;
+    max-height: 100dvh;
+    padding-top: 92px;
+    padding-bottom: 56px;
     opacity: 1;
+    margin: 0;
+    pointer-events: auto;
+    overflow-y: auto;
   }
 
   .mobile-nav a {
     display: block;
-    padding: 10px 12px;
+    width: 100%;
+    max-width: 320px;
+    margin-inline: auto;
+    padding: 14px 16px;
     color: #f7efe3;
-    border-radius: 14px;
-    font-size: 12px;
-    letter-spacing: 0.12em;
+    border-radius: 16px;
+    font-size: 14px;
+    letter-spacing: 0.14em;
     line-height: 1.45;
+    border: 1px solid transparent;
   }
 
   .mobile-nav a:hover,
   .mobile-nav a:focus-visible {
     background: rgba(216, 169, 83, 0.14);
+    border-color: rgba(216, 169, 83, 0.24);
     color: #d8a953;
   }
 
@@ -1264,7 +1290,7 @@ body:has(#qa) .qa-section {
   scroll-snap-stop: normal;
   padding: 82px 36px;
   border-top: 1px solid rgba(255, 255, 255, 0.105);
-  background-color: #080504;
+  background: url(../images/background.jpg);
 }
 
 body.menu-page .menu-section,
